@@ -1,6 +1,18 @@
 package com.dev.model;
 
+
+
 public class Student {
+
+  @Override
+    public String toString() {
+      return "ID: " + id +
+              "\nName: " + name +
+              "\nAge: "+age+
+              "\nCourse: "+course+
+              "\nMarks: "+marks;
+
+  }
 
     private int id;
     private String name;
@@ -10,11 +22,11 @@ public class Student {
 
     public  Student (int id, String name, int age, String course, double marks){
 
-        this.id=id;
-        this.name=name;
-        this.age=age;
-        this.course=course;
-        this.marks=marks;
+        setId(id);
+        setName(name);
+        setAge(age);
+        setCourse(course);
+        setMarks(marks);
 
     }
 
@@ -36,11 +48,11 @@ public class Student {
     //setterss
 
     public void setId(int id){
-        if (id>100)
+        if(id > 0)
             this.id=id;
     }
     public void setName (String name){
-        if (name!=null){
+        if(name != null && !name.trim().isEmpty()){
             this.name=name;
         }
     }
@@ -51,7 +63,8 @@ public class Student {
         this.age = age;
     }
     public void setCourse(String course) {
-        this.course = course;
+        if(course != null && !course.trim().isEmpty())
+            this.course = course;
     }
     public void setMarks(double marks){
         if(marks>=0 && marks<=100)
