@@ -50,21 +50,26 @@ public class Student {
     public void setId(int id){
         if(id > 0)
             this.id=id;
+
+
     }
     public void setName (String name){
         if(name != null && !name.trim().isEmpty()){
-            this.name=name;
+            this.name=name.trim();
         }
     }
     public void setAge(int age) {
-        if(age <= 0){
+        if(age<16 || age > 100){
             throw new IllegalArgumentException("Age must be positive");
         }
         this.age = age;
     }
     public void setCourse(String course) {
-        if(course != null && !course.trim().isEmpty())
-            this.course = course;
+        if(course != null && !course.trim().isEmpty()){
+            this.course = course.trim();
+        }else{
+            throw new IllegalArgumentException("Course cannot be empty.");
+        }
     }
     public void setMarks(double marks){
         if(marks>=0 && marks<=100)
