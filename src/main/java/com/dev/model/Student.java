@@ -48,32 +48,41 @@ public class Student {
     //setterss
 
     public void setId(int id){
-        if(id > 0)
-            this.id=id;
+        if(id <= 0)
+            throw new IllegalArgumentException("Id cannot be negative");
 
-
+        this.id=id;
     }
-    public void setName (String name){
-        if(name != null && !name.trim().isEmpty()){
-            this.name=name.trim();
+
+    public void setName(String name) {
+        if (name == null || name.trim().isEmpty()) {
+            throw new IllegalArgumentException("Name cannot be null or empty");
         }
+
+        this.name = name.trim();
     }
+
     public void setAge(int age) {
-        if(age<16 || age > 100){
-            throw new IllegalArgumentException("Age must be positive");
+        if(age<16 || age > 40){
+            throw new IllegalArgumentException("Age must be between 16 to 100");
         }
         this.age = age;
     }
+
     public void setCourse(String course) {
-        if(course != null && !course.trim().isEmpty()){
-            this.course = course.trim();
-        }else{
+        if(course == null || course.trim().isEmpty()){
             throw new IllegalArgumentException("Course cannot be empty.");
+        }else{
+            this.course = course.trim();
         }
     }
     public void setMarks(double marks){
-        if(marks>=0 && marks<=100)
-            this.marks=marks;
+
+        if (marks < 0 || marks > 100) {
+            throw new IllegalArgumentException("Marks must be between 0 and 100");
+        }
+        this.marks = marks;
+
     }
 }
 
